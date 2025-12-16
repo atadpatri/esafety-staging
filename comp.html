@@ -1,0 +1,342 @@
+<!-- eSafety Offerings Comparison Page (WordPress-embeddable) -->
+<section class="escomp">
+  <style>
+    .escomp{
+      --bg:#0b1220;--panel:#0f1a30;--text:#e7eefc;--muted:#a9b7d6;
+      --brand:#5eead4;--brand2:#60a5fa;--line:rgba(255,255,255,.10);
+      --shadow:0 18px 60px rgba(0,0,0,.35);--radius:18px;
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 15% 5%, rgba(96,165,250,.22), transparent 55%),
+        radial-gradient(900px 600px at 90% 10%, rgba(94,234,212,.16), transparent 55%),
+        linear-gradient(180deg, #070b14, var(--bg));
+      margin:0; padding:0;
+    }
+    .escomp *{box-sizing:border-box}
+    .wrap{max-width:1180px;margin:0 auto;padding:72px 18px}
+    .badge{display:inline-flex;gap:10px;align-items:center;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);color:var(--muted);font-weight:700;font-size:13px}
+    h1{font-size:clamp(30px,4vw,52px);line-height:1.05;margin:14px 0 10px}
+    .sub{color:var(--muted);font-size:18px;line-height:1.6;margin:0 0 22px}
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .toprow{display:grid;grid-template-columns:1fr ;gap:18px;}
+    .card{padding:18px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.04)}
+    .card h2{font-size:18px;margin:0 0 8px}
+    .card p{margin:0;color:var(--muted);line-height:1.6}
+    .ctaRow{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:14px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:1px solid var(--line);text-decoration:none;color:var(--text);font-weight:800;background:rgba(255,255,255,.05)}
+    .btnPrimary{background:linear-gradient(135deg, rgba(94,234,212,.95), rgba(96,165,250,.95));color:#07101f;border:none}
+    .mini{font-size:13px;color:var(--muted);margin-top:10px}
+
+    .legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;color:var(--muted);font-size:13px}
+    .chip{display:inline-flex;gap:8px;align-items:center;padding:7px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04)}
+    .dot{width:10px;height:10px;border-radius:50%}
+    .dot.y{background:#34d399}
+    .dot.n{background:#fb7185}
+
+    .tableWrap{margin-top:22px;overflow:auto;border-radius:18px;border:1px solid var(--line)}
+    table{width:100%;border-collapse:separate;border-spacing:0;min-width:980px;background:rgba(15,26,48,.35)}
+    th,td{padding:14px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+    th{position:sticky;top:0;z-index:2;background:rgba(12,22,43,.92);backdrop-filter:blur(10px);text-align:left}
+    th:first-child{border-top-left-radius:18px}
+    th:last-child{border-top-right-radius:18px}
+    tr:last-child td{border-bottom:none}
+    .colFeature{width:34%}
+    .col{width:22%}
+    .prodName{display:flex;flex-direction:column;gap:2px}
+    .prodName strong{font-size:14px}
+    .prodName span{font-size:12px;color:var(--muted);line-height:1.4}
+    .hint{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+    .tag{display:inline-flex;align-items:center;gap:8px;margin-top:8px}
+    .pill{font-size:11px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);opacity:.92}
+
+    .yes,.no{display:inline-flex;align-items:center;gap:10px;font-weight:800}
+    .yes{color:#d1fae5}
+    .no{color:#fecdd3}
+    .ic{width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.05)}
+    .ic svg{display:block}
+
+    .rowTitle{font-weight:900}
+    .muted{color:var(--muted)}
+    .note{margin-top:18px;padding:16px 18px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);line-height:1.65}
+    .divider{height:1px;background:var(--line);margin:26px 0}
+    .footer{margin-top:18px;color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+    .footer a{color:var(--text);text-decoration:none;border-bottom:1px dashed rgba(255,255,255,.35)}
+  </style>
+
+  <div class="wrap">
+    <div class="badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 2l8 4v6c0 5-3.4 9.4-8 10-4.6-.6-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="2"/>
+        <path d="M9.2 12.2l2 2 3.8-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      eSafety Offerings Comparison
+    </div>
+
+    <h1>Compare eSafety offerings</h1>
+    <p class="sub">
+      Quickly see what’s <strong>included</strong> across the eSafety Suite, the Virtual Safety Assistant (for companies with a safety manager),
+      and the Virtual Safety Manager (for companies without a dedicated safety manager).
+    </p>
+
+    <div class="toprow">
+      <div class="card panel">
+        <h2>How to choose</h2>
+        <p>
+          If you need a full safety operating system, choose <strong>eSafety Suite</strong>.
+          If you already have a safety manager and want to scale execution, choose <strong>Virtual Safety Assistant</strong>.
+          If you need structure and guidance without safety headcount, choose <strong>Virtual Safety Manager</strong>.
+        </p>
+        <div class="ctaRow">
+          <a class="btn btnPrimary" href="suite.html">View eSafety Suite</a>
+          <a class="btn" href="sm.html">With Safety Manager</a>
+          <a class="btn" href="nosm.html">Without Safety Manager</a>
+        </div>
+        <!-- <div class="mini">Update these links to match your WordPress page slugs.</div> -->
+      </div>
+
+<!--       <div class="card panel">
+        <h2>Legend</h2>
+        <div class="legend">
+          <span class="chip"><span class="dot y"></span> Included</span>
+          <span class="chip"><span class="dot n"></span> Not included</span>
+        </div>
+        <div class="divider"></div>
+        <p class="muted" style="margin:0">
+          Tip: Use this page as a “decision helper” link from pricing, product pages, email campaigns, or sales decks.
+        </p>
+      </div>
+    </div>
+ -->
+    <div class="tableWrap panel">
+      <table aria-label="eSafety offerings feature comparison">
+        <thead>
+          <tr>
+            <th class="colFeature">Module</th>
+            <th class="col">
+              <div class="prodName">
+                <strong>eSafety Suite</strong>
+                <span>Full platform (all modules)</span>
+              </div>
+              <div class="tag"><span class="pill">Most comprehensive</span></div>
+            </th>
+            <th class="col">
+              <div class="prodName">
+                <strong>Virtual Safety Assistant</strong>
+                <span>For companies <u>with</u> a safety manager</span>
+              </div>
+              <div class="tag"><span class="pill">Scale execution</span></div>
+            </th>
+            <th class="col">
+              <div class="prodName">
+                <strong>Virtual Safety Manager</strong>
+                <span>For companies <u>without</u> a safety manager</span>
+              </div>
+              <div class="tag"><span class="pill">Foundation + guidance</span></div>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <!-- Incident Manager -->
+          <tr>
+            <td class="rowTitle">Incident Manager <span class="hint">Injury, Near Miss, Auto, Property, Liability</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+            <td><span class="no"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M6 6l12 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </span>Not included</span></td>
+            <td><span class="no"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M6 6l12 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </span>Not included</span></td>
+          </tr>
+
+          <!-- OSHA Reporting -->
+          <tr>
+            <td class="rowTitle">OSHA Reporting <span class="hint">OSHA 300, OSHA 300A</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+            <td><span class="no"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M6 6l12 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </span>Not included</span></td>
+            <td><span class="no"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M6 6l12 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </span>Not included</span></td>
+          </tr>
+
+          <!-- Safety Inspections -->
+          <tr>
+            <td class="rowTitle">Safety Inspections <span class="hint">Custom forms/checklists, voice-based inspections, AI-generated reports</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+            <td><span class="no"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M6 6l12 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </span>Not included</span></td>
+          </tr>
+
+          <!-- Training Manager -->
+          <tr>
+            <td class="rowTitle">Training Manager <span class="hint">Topics, materials, schedules, expiration tracking, groups</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+            <td><span class="no"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M6 6l12 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </span>Not included</span></td>
+            <td><span class="no"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M6 6l12 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </span>Not included</span></td>
+          </tr>
+
+          <!-- Safety Observation Reports -->
+          <tr>
+            <td class="rowTitle">Safety Observation Reports <span class="hint">Safety walks: capture satisfactory/unsatisfactory observations</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+            <td><span class="no"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M6 6l12 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </span>Not included</span></td>
+            <td><span class="no"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M6 6l12 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </span>Not included</span></td>
+          </tr>
+
+          <!-- Toolbox Talks -->
+          <tr>
+            <td class="rowTitle">Toolbox Talks <span class="hint">Topics + attendance tracking</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+            <td><span class="no"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M6 6l12 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </span>Not included</span></td>
+          </tr>
+
+          <!-- Job Hazard Analysis -->
+          <tr>
+            <td class="rowTitle">Job Hazard Analysis (JHA) <span class="hint">Custom forms/checklists for job-specific hazard assessment</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+          </tr>
+
+          <!-- Corrective Actions -->
+          <tr>
+            <td class="rowTitle">Corrective Actions <span class="hint">Link to inspections/JHAs/SORs, assign owners, track completion</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+            <td><span class="no"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M6 6l12 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </span>Not included</span></td>
+            <td><span class="no"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M6 6l12 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </span>Not included</span></td>
+          </tr>
+
+          <!-- ASK Safety -->
+          <tr>
+            <td class="rowTitle">ASK Safety <span class="hint">Field questions routed to the right contact (non-emergency)</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+            <td><span class="no"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M6 6l12 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </span>Not included</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+          </tr>
+
+          <!-- Safety Plan -->
+          <tr>
+            <td class="rowTitle">Safety Plan <span class="hint">Upload, update, and distribute safety plans for jobsite access</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+          </tr>
+
+          <!-- Reporting & Analytics -->
+          <tr>
+            <td class="rowTitle">Reporting & Analytics <span class="hint">Data-driven safety insights for smarter decisions</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+            <td><span class="no"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M6 6l12 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </span>Not included</span></td>
+          </tr>
+
+          <!-- User Management -->
+          <tr>
+            <td class="rowTitle">User Management <span class="hint">Add/remove users and assign roles</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+            <td><span class="no"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M6 6l12 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </span>Not included</span></td>
+          </tr>
+
+          <!-- Safety Portal -->
+          <tr>
+            <td class="rowTitle">Safety Portal <span class="hint">Central access to safety documents and reference materials</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+            <td><span class="yes"><span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>Included</span></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+<!--     <div class="note">
+      <strong style="color:var(--text)">Note:</strong>
+      This comparison reflects the modules you listed for each offering. If you decide to include items like
+      <em>Corrective Actions</em> or <em>Reporting</em> in the Virtual Safety Manager package later, I can update the table in seconds.
+    </div>
+ -->
+    <div class="footer">
+      <div>© eSafety — Risk & Safety Management</div>
+      <div>
+        <a href="suite.html">eSafety Suite</a> ·
+        <a href="sm.html">Virtual Safety Assistant</a> ·
+        <a href="nosm.html">Virtual Safety Manager</a>
+      </div>
+    </div>
+  </div>
+</section>

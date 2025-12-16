@@ -1,0 +1,416 @@
+<!-- eSafety Suite Landing Page (WordPress-embeddable) -->
+<section class="esafety">
+  <style>
+    .esafety{--bg:#0b1220;--panel:#0f1a30;--card:#0f1a30;--card2:#0c162b;--text:#e7eefc;--muted:#a9b7d6;--brand:#5eead4;--brand2:#60a5fa;--warn:#fbbf24;--line:rgba(255,255,255,.10);--shadow:0 18px 60px rgba(0,0,0,.35);--radius:18px;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; color:var(--text); background: radial-gradient(1200px 700px at 15% 5%, rgba(96,165,250,.25), transparent 55%), radial-gradient(900px 600px at 90% 10%, rgba(94,234,212,.18), transparent 55%), linear-gradient(180deg, #070b14, var(--bg)); padding: 0; margin: 0;}
+    .esafety *{box-sizing:border-box}
+    .es-wrap{max-width:1180px;margin:0 auto;padding:72px 18px}
+    .es-grid{display:grid;gap:26px}
+    .es-hero{grid-template-columns: 1.05fr .95fr; align-items:center}
+    @media (max-width: 960px){.es-hero{grid-template-columns:1fr}}
+    .es-badge{display:inline-flex;gap:10px;align-items:center;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);color:var(--muted);font-weight:600;font-size:13px}
+    .es-badge svg{opacity:.9}
+    .es-h1{font-size: clamp(34px, 4.3vw, 56px);line-height:1.05;margin:14px 0 14px}
+    .es-sub{font-size:18px;line-height:1.6;color:var(--muted);margin:0 0 20px}
+    .es-ctaRow{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:18px}
+    .es-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:1px solid var(--line);text-decoration:none;color:var(--text);font-weight:700;background:rgba(255,255,255,.05)}
+    .es-btn:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    .es-btnPrimary{background:linear-gradient(135deg, rgba(94,234,212,.95), rgba(96,165,250,.95));color:#07101f;border:none}
+    .es-btnPrimary:hover{filter:saturate(1.1) contrast(1.05)}
+    .es-mini{font-size:13px;color:var(--muted);margin-top:10px}
+    .es-panel{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border:1px solid var(--line);border-radius: var(--radius);box-shadow: var(--shadow);overflow:hidden}
+    .es-media{position:relative;min-height:410px}
+    @media (max-width: 960px){.es-media{min-height:320px}}
+    .es-media img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.1) contrast(1.02)}
+    .es-mediaOverlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(7,11,20,.25), rgba(7,11,20,.85))}
+    .es-float{position:absolute;left:18px;right:18px;bottom:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width: 560px){.es-float{grid-template-columns:1fr}}
+    .es-kpi{background:rgba(12,22,43,.75);border:1px solid var(--line);border-radius:16px;padding:14px 14px}
+    .es-kpi strong{display:block;font-size:18px}
+    .es-kpi span{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+
+    .es-sectionTitle{margin:54px 0 14px}
+    .es-sectionTitle h2{font-size:28px;margin:0 0 8px}
+    .es-sectionTitle p{margin:0;color:var(--muted);line-height:1.6}
+
+    .es-cards{display:grid;grid-template-columns: repeat(12, 1fr); gap:14px}
+    .es-card{grid-column: span 4; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid var(--line); border-radius:18px; padding:18px; min-height: 178px}
+    .es-card:hover{transform:translateY(-2px); box-shadow:0 20px 60px rgba(0,0,0,.35)}
+    @media (max-width: 1020px){.es-card{grid-column: span 6}}
+    @media (max-width: 680px){.es-card{grid-column: span 12}}
+    .es-ic{width:42px;height:42px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+      background: radial-gradient(16px 16px at 30% 30%, rgba(255,255,255,.25), transparent 55%),
+                  linear-gradient(135deg, rgba(94,234,212,.35), rgba(96,165,250,.35));
+      border:1px solid rgba(255,255,255,.16)
+    }
+    .es-card h3{margin:12px 0 6px;font-size:18px}
+    .es-card p{margin:0;color:var(--muted);line-height:1.55;font-size:14.5px}
+    .es-pillRow{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .es-pill{font-size:12px;color:var(--text);opacity:.92;border:1px solid var(--line);background:rgba(255,255,255,.04);padding:6px 10px;border-radius:999px}
+
+    .es-split{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+    @media (max-width: 900px){.es-split{grid-template-columns:1fr}}
+    .es-callout{padding:22px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03))}
+    .es-callout h3{margin:0 0 8px;font-size:20px}
+    .es-callout p{margin:0 0 14px;color:var(--muted);line-height:1.6}
+    .es-checks{margin:0;padding-left:18px;color:var(--muted);line-height:1.75}
+    .es-checks li{margin:6px 0}
+    .es-ctaBand{margin-top:18px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+    .es-divider{height:1px;background:var(--line);margin:50px 0}
+
+    .es-faq{display:grid;gap:10px}
+    details.es-q{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+    details.es-q summary{cursor:pointer;font-weight:800}
+    details.es-q p{margin:10px 0 0;color:var(--muted);line-height:1.65}
+
+    .es-footer{margin-top:54px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;color:var(--muted);font-size:13px}
+    .es-footer a{color:var(--text);text-decoration:none;border-bottom:1px dashed rgba(255,255,255,.35)}
+    .es-footer a:hover{opacity:.9}
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      .esafety *{transition:none!important;transform:none!important}
+    }
+  </style>
+
+  <div class="es-wrap">
+    <!-- HERO -->
+    <div class="es-grid es-hero">
+      <div>
+        <div class="es-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2l8 4v6c0 5-3.4 9.4-8 10-4.6-.6-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="2"/>
+            <path d="M9.2 12.2l2 2 3.8-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Risk & Safety Management Platform
+        </div>
+
+        <h1 class="es-h1">eSafety Suite</h1>
+        <p class="es-sub">
+          A modern, unified system for <strong>incident management</strong>, <strong>inspections</strong>,
+          <strong>training</strong>, <strong>job hazard analysis</strong>, and <strong>analytics</strong>, built to reduce risk,
+          strengthen compliance, and elevate safety culture across every jobsite.
+        </p>
+
+        <div class="es-ctaRow">
+          <a class="es-btn es-btnPrimary" href="#es-modules">
+            Explore All Modules
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a class="es-btn" href="sm.html">
+            We have a Safety Manager
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M19 8v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M22 11h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </a>
+          <a class="es-btn" href="nosm.html">
+            We don't have a Safety Manager
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 20h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4 11.5-11.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+        <div class="es-mini">Tip: Update the links above to match your WordPress page slugs.</div>
+      </div>
+
+      <div class="es-panel es-media">
+        <img alt="Safety team using digital checklists on a jobsite" src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1400&q=80">
+        <div class="es-mediaOverlay"></div>
+        <div class="es-float">
+          <div class="es-kpi"><strong>Faster field capture</strong><span>Mobile-first workflows built for crews</span></div>
+          <div class="es-kpi"><strong>Audit-ready documentation</strong><span>Consistent records across sites</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULES -->
+    <div id="es-modules" class="es-sectionTitle">
+      <h2>All-in-one safety management</h2>
+      <p>Choose the tools you need today, and scale into a complete safety operating system as your program evolves.</p>
+    </div>
+
+    <div class="es-cards">
+      <!-- Incident Manager -->
+      <div class="es-card">
+        <div class="es-ic" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2l8 4v6c0 5-3.4 9.4-8 10-4.6-.6-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 7v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 17h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Incident Manager</h3>
+        <p>Report and track incidents end-to-end: injuries, near misses, auto, property, and liability, plus medical visits, claims, lost workdays, and root cause investigations.</p>
+        <div class="es-pillRow">
+          <span class="es-pill">Injury</span><span class="es-pill">Near Miss</span><span class="es-pill">Root Cause</span>
+        </div>
+      </div>
+
+      <!-- OSHA -->
+      <div class="es-card">
+        <div class="es-ic" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" stroke-width="2"/>
+            <path d="M14 2v6h6" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 13h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M8 17h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>OSHA Reporting</h3>
+        <p>Generate OSHA 300 and 300A forms from incident data to support accurate recordkeeping and streamlined compliance workflows.</p>
+        <div class="es-pillRow">
+          <span class="es-pill">OSHA 300</span><span class="es-pill">OSHA 300A</span><span class="es-pill">Compliance</span>
+        </div>
+      </div>
+
+      <!-- Inspections -->
+      <div class="es-card">
+        <div class="es-ic" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M9 11l3 3L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Safety Inspections</h3>
+        <p>Create customized checklists for audits and inspections. Capture findings faster with voice-based inspections and generate comprehensive reports with AI assistance.</p>
+        <div class="es-pillRow">
+          <span class="es-pill">Custom Forms</span><span class="es-pill">Voice Capture</span><span class="es-pill">AI Reports</span>
+        </div>
+      </div>
+
+      <!-- Training -->
+      <div class="es-card">
+        <div class="es-ic" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M22 10l-10 5L2 10l10-5 10 5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M6 12v6c0 1 3 3 6 3s6-2 6-3v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Training Manager</h3>
+        <p>Manage training topics, materials, schedules, and groups. Track expiring credentials and recertifications to keep teams current and compliant.</p>
+        <div class="es-pillRow">
+          <span class="es-pill">Expiration Tracking</span><span class="es-pill">Groups</span><span class="es-pill">Scheduling</span>
+        </div>
+      </div>
+
+      <!-- Observations -->
+      <div class="es-card">
+        <div class="es-ic" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3>Safety Observation Reports</h3>
+        <p>Capture one-time observations during safety walks, document safe and unsafe behaviors to strengthen leading indicators and safety culture.</p>
+        <div class="es-pillRow">
+          <span class="es-pill">Leading Indicators</span><span class="es-pill">Field Friendly</span><span class="es-pill">Culture</span>
+        </div>
+      </div>
+
+      <!-- Toolbox Talks -->
+      <div class="es-card">
+        <div class="es-ic" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 3v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7 8l5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 13h14v8H5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Toolbox Talks</h3>
+        <p>Document toolbox talk topics and track attendance digitally, ensure briefings are consistent, searchable, and audit-ready.</p>
+        <div class="es-pillRow">
+          <span class="es-pill">Attendance</span><span class="es-pill">Topics</span><span class="es-pill">Records</span>
+        </div>
+      </div>
+
+      <!-- JHA -->
+      <div class="es-card">
+        <div class="es-ic" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 9h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M8 13h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M8 17h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Job Hazard Analysis</h3>
+        <p>Build job-specific hazard analyses with customizable forms that match your workflows, standardize planning and reduce risk before work begins.</p>
+        <div class="es-pillRow">
+          <span class="es-pill">Pre-task Planning</span><span class="es-pill">Controls</span><span class="es-pill">Custom Templates</span>
+        </div>
+      </div>
+
+      <!-- Corrective Actions -->
+      <div class="es-card">
+        <div class="es-ic" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 3h18v18H3z" stroke="currentColor" stroke-width="2" opacity=".45"/>
+          </svg>
+        </div>
+        <h3>Corrective Actions</h3>
+        <p>Link actions to inspections, JHAs, and observations. Assign owners, track completion, and ensure hazards get closed, not just reported.</p>
+        <div class="es-pillRow">
+          <span class="es-pill">Ownership</span><span class="es-pill">Tracking</span><span class="es-pill">Closure</span>
+        </div>
+      </div>
+
+      <!-- Ask Safety -->
+      <div class="es-card">
+        <div class="es-ic" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2-2.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 17h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>ASK Safety</h3>
+        <p>Give field teams a direct channel for safety questions, routed to the right contact for clarification and guidance (not intended for emergencies).</p>
+        <div class="es-pillRow">
+          <span class="es-pill">Field Q&A</span><span class="es-pill">Routing</span><span class="es-pill">Guidance</span>
+        </div>
+      </div>
+
+      <!-- Safety Plan -->
+      <div class="es-card">
+        <div class="es-ic" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" stroke-width="2"/>
+            <path d="M14 2v6h6" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M8 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Safety Plan</h3>
+        <p>Upload, update, and distribute safety plans so teams always reference the latest requirements on every jobsite.</p>
+        <div class="es-pillRow">
+          <span class="es-pill">Version Control</span><span class="es-pill">Field Access</span><span class="es-pill">Distribution</span>
+        </div>
+      </div>
+
+      <!-- Reporting -->
+      <div class="es-card">
+        <div class="es-ic" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M4 19V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M4 19h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7 16l4-6 4 3 5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Reporting & Analytics</h3>
+        <p>Turn safety activity into insights, spot trends, track leading indicators, and guide decisions with clear reporting.</p>
+        <div class="es-pillRow">
+          <span class="es-pill">Trends</span><span class="es-pill">Dashboards</span><span class="es-pill">Insights</span>
+        </div>
+      </div>
+
+      <!-- User Mgmt -->
+      <div class="es-card">
+        <div class="es-ic" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>User Management</h3>
+        <p>Add or remove users and assign roles to keep access secure and aligned with responsibilities.</p>
+        <div class="es-pillRow">
+          <span class="es-pill">Roles</span><span class="es-pill">Permissions</span><span class="es-pill">Governance</span>
+        </div>
+      </div>
+
+      <!-- Portal -->
+      <div class="es-card">
+        <div class="es-ic" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M4 4h16v6H4z" stroke="currentColor" stroke-width="2"/>
+            <path d="M4 14h16v6H4z" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 7h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            <path d="M8 17h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Safety Portal</h3>
+        <p>Central access to company safety documents, policies, and reference materials, organized, searchable, and always available.</p>
+        <div class="es-pillRow">
+          <span class="es-pill">Documents</span><span class="es-pill">Policies</span><span class="es-pill">Reference</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="es-divider"></div>
+
+    <!-- WITH vs WITHOUT -->
+    <div class="es-sectionTitle">
+      <h2>Choose the right path for your organization</h2>
+      <p>Whether you have an in-house safety leader or not, eSafety supports a scalable safety program.</p>
+    </div>
+
+    <div class="es-split">
+      <div class="es-callout">
+        <h3>We have a Safety Manager</h3>
+        <p>Perfect for teams with a dedicated safety leader who want to scale field execution, standardize documentation, and unlock deeper analytics.</p>
+        <ul class="es-checks">
+          <li>AI-assisted inspections and reporting for faster turnaround</li>
+          <li>Standardized JHAs and toolbox talks across sites</li>
+          <li>Centralized safety plans, portal, and role-based controls</li>
+        </ul>
+        <div class="es-ctaBand">
+          <a class="es-btn es-btnPrimary" href="sm.html">View Offering</a>
+          <a class="es-btn" href="#es-faq">FAQs</a>
+        </div>
+      </div>
+
+      <div class="es-callout">
+        <h3>We don't have a Safety Manager</h3>
+        <p>Designed for organizations that need strong safety structure and guidance, without dedicated safety headcount.</p>
+        <ul class="es-checks">
+          <li>Guided Job Hazard Analysis workflows</li>
+          <li>Safety Plans and Safety Portal for consistent access</li>
+          <li>ASK Safety for field questions and support (non-emergency)</li>
+        </ul>
+        <div class="es-ctaBand">
+          <a class="es-btn es-btnPrimary" href="nosm.html">View Offering</a>
+          <a class="es-btn" href="#es-faq">FAQs</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div id="es-faq" class="es-sectionTitle">
+      <h2>Frequently asked questions</h2>
+      <p>Short answers that help buyers and safety leaders evaluate fit quickly.</p>
+    </div>
+
+    <div class="es-faq">
+      <details class="es-q">
+        <summary>Is eSafety mobile-friendly for field teams?</summary>
+        <p>Yes, modules are designed for fast, structured field capture so supervisors and crews can report, inspect, and document from the jobsite.</p>
+      </details>
+      <details class="es-q">
+        <summary>Can we customize forms and workflows?</summary>
+        <p>Yes, inspection checklists, JHAs, toolbox talks, and other workflows can be tailored to your processes and job types.</p>
+      </details>
+      <details class="es-q">
+        <summary>How does eSafety support compliance?</summary>
+        <p>eSafety standardizes documentation, supports OSHA reporting workflows, and centralizes records so your program stays consistent and audit-ready.</p>
+      </details>
+    </div>
+
+    <div class="es-footer">
+      <div>© eSafety ,  Risk & Safety Management</div>
+      <div>
+        <a href="sm.html">We have a Safety Manager</a> ·
+        <a href="nosm.html">We don't have a Safety Manager</a>
+      </div>
+    </div>
+  </div>
+</section>
