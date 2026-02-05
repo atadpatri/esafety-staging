@@ -1,0 +1,535 @@
+<!-- eSafety Client Fit Questionnaire (Single-file, embeddable) -->
+<section class="esafety" id="esafety-questionnaire">
+  <style>
+    .esafety{
+      --bg:#0b1220;--panel:#0f1a30;--card:#0f1a30;--card2:#0c162b;
+      --text:#e7eefc;--muted:#a9b7d6;--brand:#5eead4;--brand2:#60a5fa;--warn:#fbbf24;
+      --line:rgba(255,255,255,.10);--shadow:0 18px 60px rgba(0,0,0,.35);--radius:18px;
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      color:var(--text);
+      background: radial-gradient(1200px 700px at 15% 5%, rgba(96,165,250,.25), transparent 55%),
+                  radial-gradient(900px 600px at 90% 10%, rgba(94,234,212,.18), transparent 55%),
+                  linear-gradient(180deg, #070b14, var(--bg));
+      padding:0;margin:0
+    }
+    .esafety *{box-sizing:border-box}
+    .es-wrap{max-width:1000px;margin:0 auto;padding:56px 18px}
+    .es-panel{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden
+    }
+    .es-head{padding:22px 22px 0}
+    .es-badge{
+      display:inline-flex;gap:10px;align-items:center;padding:8px 12px;border:1px solid var(--line);
+      border-radius:999px;background:rgba(255,255,255,.04);color:var(--muted);font-weight:700;font-size:13px
+    }
+    .es-h1{font-size:clamp(28px,3.2vw,40px);line-height:1.1;margin:14px 0 10px}
+    .es-sub{color:var(--muted);line-height:1.65;margin:0 0 16px}
+    .es-body{padding:18px 22px 22px}
+    .es-grid{display:grid;gap:14px}
+
+    .q-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--line);border-radius:18px;padding:16px
+    }
+    .q-title{display:flex;gap:10px;align-items:flex-start}
+    .q-num{
+      width:28px;height:28px;border-radius:10px;flex:0 0 auto;
+      display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg, rgba(94,234,212,.35), rgba(96,165,250,.35));
+      border:1px solid rgba(255,255,255,.16);font-weight:900
+    }
+    .q-card h3{margin:0;font-size:16px}
+    .q-help{margin:6px 0 0;color:var(--muted);font-size:13px;line-height:1.55}
+
+    .opts{margin-top:12px;display:grid;gap:10px}
+    .opt{
+      display:flex;gap:10px;align-items:flex-start;
+      border:1px solid var(--line);background:rgba(255,255,255,.04);
+      padding:10px 12px;border-radius:14px;cursor:pointer
+    }
+    .opt:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(0,0,0,.22)}
+    .opt input{margin-top:3px}
+    .opt b{font-weight:800}
+    .opt span{color:var(--muted);font-size:13px;display:block;margin-top:2px;line-height:1.45}
+
+    .controls{
+      display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:16px
+    }
+    .es-btn{
+      display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:1px solid var(--line);
+      text-decoration:none;color:var(--text);font-weight:800;background:rgba(255,255,255,.05);cursor:pointer
+    }
+    .es-btnPrimary{background:linear-gradient(135deg, rgba(94,234,212,.95), rgba(96,165,250,.95));color:#07101f;border:none}
+    .es-mini{font-size:13px;color:var(--muted)}
+    .divider{height:1px;background:var(--line);margin:16px 0}
+
+    .result{
+      display:none;margin-top:14px;padding:16px;border-radius:18px;border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03))
+    }
+    .result h2{margin:0 0 8px;font-size:20px}
+    .pillRow{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .pill{font-size:12px;color:var(--text);opacity:.92;border:1px solid var(--line);background:rgba(255,255,255,.04);padding:6px 10px;border-radius:999px}
+    .warn{color:var(--warn);font-weight:800}
+    .muted{color:var(--muted)}
+    .small{font-size:13px;line-height:1.55}
+    .error{display:none;color:#ffd1d1;background:rgba(255,64,64,.10);border:1px solid rgba(255,64,64,.25);padding:12px;border-radius:14px;margin-top:12px}
+    @media (prefers-reduced-motion: reduce){
+      .esafety *{transition:none!important;transform:none!important}
+    }
+  </style>
+
+  <div class="es-wrap">
+    <div class="es-panel">
+      <div class="es-head">
+        <div class="es-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2l8 4v6c0 5-3.4 9.4-8 10-4.6-.6-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="2"/>
+            <path d="M9.2 12.2l2 2 3.8-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Client Review Questionnaire
+        </div>
+        <h1 class="es-h1">eSafety Product Fit (10 Questions)</h1>
+        <p class="es-sub">
+          Use this during a client call: select the answers as they speak. Submit at the end to get a recommended offering:
+          <b>Virtual Safety Manager</b>, <b>Virtual Safety Assistant</b>, or <b>eSafety Suite</b>.
+        </p>
+      </div>
+
+      <div class="es-body">
+        <form id="fitForm" class="es-grid">
+
+          <!-- Q1 -->
+          <div class="q-card" data-q="q1">
+            <div class="q-title">
+              <div class="q-num">1</div>
+              <div>
+                <h3>Who owns the safety program day-to-day?</h3>
+                <div class="q-help">This is the primary routing signal.</div>
+              </div>
+            </div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="q1" value="A">
+                <div><b>A) Dedicated Safety Manager / Safety Director</b><span>One accountable owner runs safety.</span></div>
+              </label>
+              <label class="opt"><input type="radio" name="q1" value="B">
+                <div><b>B) Shared ownership (Ops/HR/Supervisors)</b><span>Distributed responsibilities, no single leader.</span></div>
+              </label>
+              <label class="opt"><input type="radio" name="q1" value="C">
+                <div><b>C) No clear owner (handled “as needed”)</b><span>Reactive, inconsistent ownership.</span></div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="q-card" data-q="q2">
+            <div class="q-title">
+              <div class="q-num">2</div>
+              <div>
+                <h3>How standardized are safety processes across sites/teams?</h3>
+                <div class="q-help">Consistency across supervisors and jobsites.</div>
+              </div>
+            </div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="q2" value="A">
+                <div><b>A) Fully standardized</b><span>Consistent processes and documentation everywhere.</span></div>
+              </label>
+              <label class="opt"><input type="radio" name="q2" value="B">
+                <div><b>B) Partially standardized</b><span>Varies by site/supervisor.</span></div>
+              </label>
+              <label class="opt"><input type="radio" name="q2" value="C">
+                <div><b>C) Mostly informal</b><span>Tribal knowledge, inconsistent documentation.</span></div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="q-card" data-q="q3">
+            <div class="q-title">
+              <div class="q-num">3</div>
+              <div>
+                <h3>How complex are your operations?</h3>
+                <div class="q-help">Complexity pushes toward a full operating system.</div>
+              </div>
+            </div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="q3" value="A">
+                <div><b>A) Single site / few crews</b><span>Lower complexity.</span></div>
+              </label>
+              <label class="opt"><input type="radio" name="q3" value="B">
+                <div><b>B) Multiple sites or multiple crews</b><span>Moderate complexity.</span></div>
+              </label>
+              <label class="opt"><input type="radio" name="q3" value="C">
+                <div><b>C) Multi-site + multiple job types / high-risk work</b><span>High complexity and higher risk exposure.</span></div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="q-card" data-q="q4">
+            <div class="q-title">
+              <div class="q-num">4</div>
+              <div>
+                <h3>How do you manage incidents today?</h3>
+                <div class="q-help">Injury/near miss/property/auto; investigations and root cause.</div>
+              </div>
+            </div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="q4" value="A">
+                <div><b>A) We use a system end-to-end</b><span>Includes investigations/root cause tracking.</span></div>
+              </label>
+              <label class="opt"><input type="radio" name="q4" value="B">
+                <div><b>B) Mix of forms/spreadsheets/email</b><span>Some structure, but fragmented.</span></div>
+              </label>
+              <label class="opt"><input type="radio" name="q4" value="C">
+                <div><b>C) Ad hoc</b><span>Notes/calls, inconsistent tracking.</span></div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="q-card" data-q="q5">
+            <div class="q-title">
+              <div class="q-num">5</div>
+              <div>
+                <h3>Do you need formal compliance outputs (e.g., OSHA 300/300A) or frequent audit readiness?</h3>
+                <div class="q-help">Higher compliance pressure tends to require the full suite.</div>
+              </div>
+            </div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="q5" value="A">
+                <div><b>A) Yes, required regularly</b><span>Strong compliance requirement.</span></div>
+              </label>
+              <label class="opt"><input type="radio" name="q5" value="B">
+                <div><b>B) Sometimes</b><span>Depends on client/projects.</span></div>
+              </label>
+              <label class="opt"><input type="radio" name="q5" value="C">
+                <div><b>C) Not currently</b><span>Low compliance pressure today.</span></div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Q6 -->
+          <div class="q-card" data-q="q6">
+            <div class="q-title">
+              <div class="q-num">6</div>
+              <div>
+                <h3>How are inspections / observations / daily checks captured today?</h3>
+                <div class="q-help">Field workflow maturity and admin burden.</div>
+              </div>
+            </div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="q6" value="A">
+                <div><b>A) Digital and consistent</b><span>Structured capture in place.</span></div>
+              </label>
+              <label class="opt"><input type="radio" name="q6" value="B">
+                <div><b>B) Paper + manual entry later</b><span>High admin load.</span></div>
+              </label>
+              <label class="opt"><input type="radio" name="q6" value="C">
+                <div><b>C) Inconsistent / rarely done</b><span>Time pressure prevents consistent execution.</span></div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Q7 -->
+          <div class="q-card" data-q="q7">
+            <div class="q-title">
+              <div class="q-num">7</div>
+              <div>
+                <h3>How do crews perform Job Hazard Analysis (JHA) / pre-task planning?</h3>
+                <div class="q-help">Key for “structure” vs “scale execution.”</div>
+              </div>
+            </div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="q7" value="A">
+                <div><b>A) Always, consistent format</b><span>Standard and documented.</span></div>
+              </label>
+              <label class="opt"><input type="radio" name="q7" value="B">
+                <div><b>B) Sometimes, varies</b><span>Not consistent across teams.</span></div>
+              </label>
+              <label class="opt"><input type="radio" name="q7" value="C">
+                <div><b>C) Rarely / not documented</b><span>High risk from missing pre-task controls.</span></div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Q8 -->
+          <div class="q-card" data-q="q8">
+            <div class="q-title">
+              <div class="q-num">8</div>
+              <div>
+                <h3>How do you manage training and certifications (expiry/recertification)?</h3>
+                <div class="q-help">Training ops + compliance risk.</div>
+              </div>
+            </div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="q8" value="A">
+                <div><b>A) Systemized tracking + schedules</b><span>Expiration and renewals covered.</span></div>
+              </label>
+              <label class="opt"><input type="radio" name="q8" value="B">
+                <div><b>B) Spreadsheet/manual reminders</b><span>Manual tracking overhead.</span></div>
+              </label>
+              <label class="opt"><input type="radio" name="q8" value="C">
+                <div><b>C) Not tracked consistently</b><span>Risk of expired certifications.</span></div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Q9 -->
+          <div class="q-card" data-q="q9">
+            <div class="q-title">
+              <div class="q-num">9</div>
+              <div>
+                <h3>How are corrective actions assigned and closed?</h3>
+                <div class="q-help">Closure discipline strongly correlates with platform need.</div>
+              </div>
+            </div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="q9" value="A">
+                <div><b>A) Owned, due-dated, closure verified</b><span>Tracked to completion.</span></div>
+              </label>
+              <label class="opt"><input type="radio" name="q9" value="B">
+                <div><b>B) Informal, closure not reliable</b><span>Some follow-up gaps.</span></div>
+              </label>
+              <label class="opt"><input type="radio" name="q9" value="C">
+                <div><b>C) Mostly verbal / not tracked</b><span>Hazards may remain open.</span></div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Q10 -->
+          <div class="q-card" data-q="q10">
+            <div class="q-title">
+              <div class="q-num">10</div>
+              <div>
+                <h3>What would create the biggest improvement in the next 60–90 days?</h3>
+                <div class="q-help">This forces the conclusion and validates the fit.</div>
+              </div>
+            </div>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="q10" value="A">
+                <div><b>A) We need structure + guided workflows</b><span>No safety expertise in-house.</span></div>
+              </label>
+              <label class="opt"><input type="radio" name="q10" value="B">
+                <div><b>B) We need to scale execution</b><span>Safety leader exists but is overloaded.</span></div>
+              </label>
+              <label class="opt"><input type="radio" name="q10" value="C">
+                <div><b>C) We need a complete system</b><span>Incidents + compliance + training + analytics at scale.</span></div>
+              </label>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="controls">
+            <div class="es-mini">
+              Tip: If you want to export answers later, I can add CSV download or a “copy summary” button.
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button type="button" class="es-btn" id="resetBtn">Reset</button>
+              <button type="submit" class="es-btn es-btnPrimary">Submit & Get Recommendation</button>
+            </div>
+          </div>
+
+          <div class="error" id="errorBox">
+            <b class="warn">Missing answers:</b>
+            <span id="missingText"></span>
+          </div>
+
+          <div class="result" id="resultBox" aria-live="polite">
+            <h2 id="resultTitle">Recommendation</h2>
+            <div class="small muted" id="resultSummary"></div>
+            <div class="pillRow" id="resultPills"></div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const form = document.getElementById('fitForm');
+      const resultBox = document.getElementById('resultBox');
+      const resultTitle = document.getElementById('resultTitle');
+      const resultSummary = document.getElementById('resultSummary');
+      const resultPills = document.getElementById('resultPills');
+      const errorBox = document.getElementById('errorBox');
+      const missingText = document.getElementById('missingText');
+      const resetBtn = document.getElementById('resetBtn');
+
+      const QNAMES = ["q1","q2","q3","q4","q5","q6","q7","q8","q9","q10"];
+
+      function getAnswers(){
+        const ans = {};
+        for (const q of QNAMES){
+          const el = form.querySelector(`input[name="${q}"]:checked`);
+          ans[q] = el ? el.value : null;
+        }
+        return ans;
+      }
+
+      function missing(ans){
+        const miss = [];
+        QNAMES.forEach((q, idx) => { if(!ans[q]) miss.push(idx+1); });
+        return miss;
+      }
+
+      // Deterministic routing engine based on your rules
+      function recommend(ans){
+        const reasons = [];
+        // Suite signals: any two true => Suite
+        const suiteSignals = [];
+
+        const incidentFrag = (ans.q4 === "B" || ans.q4 === "C");
+        if (incidentFrag) suiteSignals.push("Fragmented incident tracking");
+
+        const complianceHigh = (ans.q5 === "A");
+        if (complianceHigh) suiteSignals.push("Regular compliance/audit outputs");
+
+        const trainingFrag = (ans.q8 === "B" || ans.q8 === "C");
+        if (trainingFrag) suiteSignals.push("Training/cert tracking is manual/inconsistent");
+
+        const caWeak = (ans.q9 === "B" || ans.q9 === "C");
+        if (caWeak) suiteSignals.push("Corrective actions not reliably closed");
+
+        const highComplex = (ans.q3 === "C");
+        if (highComplex) suiteSignals.push("High operational complexity (multi-site/high-risk)");
+
+        const wantsSystem = (ans.q10 === "C");
+        if (wantsSystem) suiteSignals.push("Priority: complete system in 60–90 days");
+
+        // If explicit desire is Suite, honor it.
+        if (ans.q10 === "C") {
+          return {
+            product: "eSafety Suite",
+            summary: "Client prioritized a complete connected system across incidents, compliance, training, and analytics.",
+            tags: ["Full platform", "End-to-end workflows", "Audit readiness"],
+            reasons: suiteSignals.slice(0,5)
+          };
+        }
+
+        // If two or more Suite signals: Suite
+        if (suiteSignals.length >= 2) {
+          reasons.push(...suiteSignals.slice(0,5));
+          return {
+            product: "eSafety Suite",
+            summary: "Multiple operational signals indicate a need for an end-to-end safety operating system (not just a guided or scale-execution layer).",
+            tags: ["Incidents + compliance", "Training + analytics", "Governance + closure"],
+            reasons
+          };
+        }
+
+        // Non-suite: choose between Virtual Safety Manager vs Virtual Safety Assistant
+        const hasSafetyMgr = (ans.q1 === "A");
+        const weakStandardization = (ans.q2 === "B" || ans.q2 === "C");
+        const jhaWeak = (ans.q7 === "B" || ans.q7 === "C");
+        const fieldCaptureWeak = (ans.q6 === "B" || ans.q6 === "C");
+
+        // Force conclusion with Q10 intent when possible
+        if (!hasSafetyMgr) {
+          // Virtual Safety Manager (no dedicated safety manager)
+          const vsmFit = (weakStandardization && (ans.q10 === "A" || jhaWeak || fieldCaptureWeak));
+          if (vsmFit) {
+            if (ans.q1 !== "A") reasons.push("No dedicated safety manager (ownership gap)");
+            if (weakStandardization) reasons.push("Processes vary by site/team");
+            if (jhaWeak) reasons.push("JHA/pre-task planning not consistent");
+            if (ans.q10 === "A") reasons.push("Priority: guided structure in 60–90 days");
+            return {
+              product: "Virtual Safety Manager",
+              summary: "Best fit when safety leadership is not dedicated and the organization needs guided workflows and consistent access to safety resources.",
+              tags: ["Guided JHA", "Safety Plan + Portal", "ASK Safety"],
+              reasons
+            };
+          }
+          // If no manager but signals not strong, still default to VSM unless overloaded system need.
+          reasons.push("Safety ownership is shared or unclear");
+          return {
+            product: "Virtual Safety Manager",
+            summary: "Default recommendation when there is no dedicated safety manager—establish structure, documentation practices, and on-demand guidance.",
+            tags: ["Structure without headcount", "Consistency", "Accessible resources"],
+            reasons
+          };
+        } else {
+          // Virtual Safety Assistant (they have a Safety Manager)
+          const vsaFit = (ans.q10 === "B" || fieldCaptureWeak || jhaWeak || weakStandardization || caWeak);
+          if (vsaFit) {
+            reasons.push("Dedicated safety leader exists (focus on scaling execution)");
+            if (fieldCaptureWeak) reasons.push("Inspections/field capture is paper/manual or inconsistent");
+            if (weakStandardization) reasons.push("Execution varies across sites/teams");
+            if (jhaWeak) reasons.push("JHA consistency can be improved");
+            if (ans.q10 === "B") reasons.push("Priority: scale execution & reduce admin load in 60–90 days");
+            return {
+              product: "Virtual Safety Assistant",
+              summary: "Best fit when a Safety Manager exists but needs standardization, faster field capture, and insight from activity—without adding admin load.",
+              tags: ["Standardize execution", "Reduce admin load", "Reporting + analytics"],
+              reasons
+            };
+          }
+          // If highly mature and no suite signals, still recommend VSA as the scalable layer
+          return {
+            product: "Virtual Safety Assistant",
+            summary: "A Safety Manager exists and suite-level signals aren’t dominant—this offering helps scale execution and reduce overhead.",
+            tags: ["Scale adoption", "Consistency", "Operational insight"],
+            reasons: ["Dedicated safety leadership present"]
+          };
+        }
+      }
+
+      function renderResult(rec){
+        resultTitle.textContent = `Recommended: ${rec.product}`;
+        const why = rec.reasons && rec.reasons.length ? rec.reasons : [];
+        const whyHtml = [
+          `<b>Summary:</b> ${rec.summary}`,
+          why.length ? `<br><br><b>Key signals:</b><ul class="small" style="margin:8px 0 0;padding-left:18px">${why.map(x=>`<li>${x}</li>`).join("")}</ul>` : ""
+        ].join("");
+        resultSummary.innerHTML = whyHtml;
+
+        resultPills.innerHTML = "";
+        (rec.tags || []).forEach(t => {
+          const s = document.createElement("span");
+          s.className = "pill";
+          s.textContent = t;
+          resultPills.appendChild(s);
+        });
+
+        resultBox.style.display = "block";
+        resultBox.scrollIntoView({behavior:"smooth", block:"start"});
+      }
+
+      function showMissing(miss){
+        errorBox.style.display = "block";
+        missingText.textContent = miss.join(", ");
+        errorBox.scrollIntoView({behavior:"smooth", block:"center"});
+      }
+
+      function clearError(){
+        errorBox.style.display = "none";
+        missingText.textContent = "";
+      }
+
+      form.addEventListener("submit", function(e){
+        e.preventDefault();
+        clearError();
+        const ans = getAnswers();
+        const miss = missing(ans);
+        if (miss.length){
+          showMissing(miss);
+          resultBox.style.display = "none";
+          return;
+        }
+        const rec = recommend(ans);
+        renderResult(rec);
+      });
+
+      resetBtn.addEventListener("click", function(){
+        form.reset();
+        clearError();
+        resultBox.style.display = "none";
+        // Optional: scroll to top of form
+        document.getElementById('esafety-questionnaire').scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    })();
+  </script>
+</section>
